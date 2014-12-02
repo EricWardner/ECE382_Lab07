@@ -2,12 +2,12 @@ ECE382_Lab07
 ============
 ## Table of Contents ##
 - [Introduction](#introduction)
-- [Pre-lab](#Pre-lab)
-    - [Useful Information](#Useful Information)
-    - [Sensor Test](#Sensor Test)
-    - [Setup of ADC10](#Setup of ADC10)
-    - [Hardware setup](#Hardware setup)
-    - [Code ideas](#Code ideas)
+- [Pre-lab](#pre-lab)
+    - [Useful Information](#useful-information)
+    - [Sensor Test](#sensor-test)
+    - [Setup of ADC10](#setup-of-adc10)
+    - [Hardware Setup](#hardwaressetup)
+    - [Code Ideas](#code-ideas)
 
 ##Introduction
 The purpose of this lab was to implement the analog to digital converters n the MSP430 so that it could read and interpret signals from the robot's 3 IR detectors/emitters
@@ -25,9 +25,9 @@ To-do
 -what registers
 -which bits in registers are important
 -whats the init sequence
-###Hardware setup
+###Hardware Setup
 -which ADC10 channels will be used?
 -which pins correspond to those channels?
-###Code ideas
+###Code Ideas
 -block or use interrupts?
 -convert one sensor at a time or multiple?
