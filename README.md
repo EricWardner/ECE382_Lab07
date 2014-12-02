@@ -19,9 +19,10 @@ The purpose of this lab was to implement the analog to digital converters n the 
 ###Useful Information
 To-do
 ###Sensor Test
--Maybe add video ofsensor test. Will test using cell phone camera. Digital cameras pick up light in the infa red spectrum. It shows up as purple
+-Maybe add video of emittor test. Will test using cell phone camera. Digital cameras pick up light in the infa red spectrum. It shows up as purple
 
--What are good reference values?? To-do/to-understand
+-What are good reference values??
+    -test with multimeter and piece of paper, create chart, convert chart using the proportion
 
 ###Setup of ADC10
 -what registers
