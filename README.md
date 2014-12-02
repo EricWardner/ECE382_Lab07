@@ -17,9 +17,22 @@ The purpose of this lab was to implement the analog to digital converters n the 
 ##Pre-Lab
 
 ###Useful Information
-To-do
+<ul>
+<li>You must provide 5V and ground to the IR sensors!</li>
+<li>Be mindful of loading!<ul>
+<li>To combat it, sample as slowly as possible</li>
+</ul>
+</li>
+<li>Be sure you write a quality header/implementation file so you can easily import this code for the maze competition.</li>
+<li>You may want to use your moving average library to smooth the output from your sensors.</li>
+</ul>
 ###Sensor Test
--Maybe add video of emittor test. Will test using cell phone camera. Digital cameras pick up light in the infa red spectrum. It shows up as purple
+Emmiter test: Viewing the IR emmitters with my cell phone camera showed that they all turned on and sent something out.
+|Sensor |  Min  |  Max |Threshold|
+|-------|-------|-------|-------|
+|Left|.300v|4.8v|1.0v-2.0v|
+|Center|.300v|4.8v|1.0v-2.0v|
+|Right|.300v|4.8v|1.0v-2.0v|
 
 -What are good reference values??
     -test with multimeter and piece of paper, create chart, convert chart using the proportion
