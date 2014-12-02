@@ -28,9 +28,12 @@ The purpose of this lab was to implement the analog to digital converters n the 
 </ul>
 ###Sensor Test
 Emmiter test: Viewing the IR emmitters with my cell phone camera showed that they all turned on and sent something out.
+
+The test for the sensors was done by first wiring up the emitter to 5v and ground then attaching a multimeter to the sensor port and ground. I then put the robot in an open area to get the 
+
 |Sensor |  Min  |  Max |Threshold|
-|-------|-------|-------|-------|
-|Left|.300v|4.8v|1.0v-2.0v|
+|:-------:|:-------:|:-------:|:-------:|
+|Left   |.300v|4.8v|1.0v-2.0v|
 |Center|.300v|4.8v|1.0v-2.0v|
 |Right|.300v|4.8v|1.0v-2.0v|
 
