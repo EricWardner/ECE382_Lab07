@@ -20,14 +20,21 @@ The purpose of this lab was to implement the analog to digital converters n the 
 To-do
 ###Sensor Test
 -Maybe add video ofsensor test. Will test using cell phone camera. Digital cameras pick up light in the infa red spectrum. It shows up as purple
+
 -What are good reference values?? To-do/to-understand
+
 ###Setup of ADC10
 -what registers
+
 -which bits in registers are important
+
 -whats the init sequence
 ###Hardware Setup
 -which ADC10 channels will be used?
+
 -which pins correspond to those channels?
+
 ###Code Ideas
 -block or use interrupts?
+
 -convert one sensor at a time or multiple?
