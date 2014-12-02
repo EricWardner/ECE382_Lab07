@@ -29,16 +29,14 @@ The purpose of this lab was to implement the analog to digital converters n the 
 ###Sensor Test
 Emmiter test: Viewing the IR emmitters with my cell phone camera showed that they all turned on and sent something out.
 
-The test for the sensors was done by first wiring up the emitter to 5v and ground then attaching a multimeter to the sensor port and ground. I then put the robot in an open area to get the 
+The test for the sensors was done by first wiring up the emitter to 5v and ground then attaching a multimeter to the sensor port and ground. I then put the robot in an open area to get the min value and up against the wall to get a max value. The threshold was taken from 2 inches away from the wall and far enough back so that readings were still sensitive. There seemed to be a certain lower threshold usually just below 1v where reading weren't very accurate and jumped around (could be noise). 
 
 |Sensor |  Min  |  Max |Threshold|
 |:-------:|:-------:|:-------:|:-------:|
-|Left   |.300v|4.8v|1.0v-2.0v|
-|Center|.300v|4.8v|1.0v-2.0v|
-|Right|.300v|4.8v|1.0v-2.0v|
+|Left   |.200v|4.8v|0.95v-2.5v|
+|Center|.300v|4.6v|0.8v-1.7v|
+|Right|.317v|4.82v|0.6v-1.97v|
 
--What are good reference values??
-    -test with multimeter and piece of paper, create chart, convert chart using the proportion
 
 ###Setup of ADC10
 -what registers
