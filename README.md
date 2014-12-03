@@ -26,6 +26,11 @@ The purpose of this lab was to implement the analog to digital converters n the 
 <li>Be sure you write a quality header/implementation file so you can easily import this code for the maze competition.</li>
 <li>You may want to use your moving average library to smooth the output from your sensors.</li>
 </ul>
+
+"With few exceptions the ADC10 control bits can only be modified when ENC = 0. ENC must be set to 1 before any conversion can take place." -tech docs
+
+[lab7.c](http://ecse.bd.psu.edu/cmpen352/lecture/code/lec36.c)
+
 ###Sensor Test
 Emmiter test: Viewing the IR emmitters with my cell phone camera showed that they all turned on and sent something out.
 
@@ -39,17 +44,61 @@ The test for the sensors was done by first wiring up the emitter to 5v and groun
 
 
 ###Setup of ADC10
--what registers
+"The ADC10 module supports fast, 10-bit analog-to-digital conversions. The module implements a 10-bit SAR core, sample select control, reference generator, and data transfer controller (DTC)."
 
--which bits in registers are important
+######what registers will be used?
 
--whats the init sequence
+ADC10CTL0
+
+ADC10CTL1
+
+ADC10AE0
+
+ADC10MEM
+
+ADC10BUSY
+
+######which bits in registers are important
+
+ADC10SHTx: Sample and hold time
+
+SREF_0: Vcc & Vss as reference
+
+ADC10ON: Turns it on
+
+ENC: Enable conversion
+
+ADC10SC: Start conversion
+
+
+######What is the init sequence?
+Dr. Coulston provided code in lab7.c
+
+```C
+ADC10CTL0 = 0;											// Turn off ADC subsystem
+ADC10CTL1 = INCH_4 | ADC10DIV_3 ;						// Channel 4, ADC10CLK/4
+ADC10AE0 = BIT4;		 								// Make P1.4 analog input
+ADC10CTL0 = SREF_0 | ADC10SHT_3 | ADC10ON | ENC;		// Vcc & Vss as reference
+```
+
 ###Hardware Setup
--which ADC10 channels will be used?
+######which ADC10 channels will be used?
 
--which pins correspond to those channels?
+Most likely channels 4, 3, and 2 will be used.
+
+######which pins correspond to those channels?
+
+P1.4 - channel 4
+
+P1.3 - channel 3
+
+P1.2 - channel 2
 
 ###Code Ideas
--block or use interrupts?
+######block or use interrupts?
 
--convert one sensor at a time or multiple?
+I think it will be a good idea to use interrupts and just cycle through each reading really fast. The tech doc already provides guidance on the ADC10 interrupts.
+
+######convert one sensor at a time or multiple?
+
+One sensor at a time. The code will be simpler.
