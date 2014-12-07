@@ -8,6 +8,7 @@ ECE382_Lab07
     - [Setup of ADC10](#setup-of-adc10)
     - [Hardware Setup](#hardwaressetup)
     - [Code Ideas](#code-ideas)
+- [Lab](#lab)
 
 ##Introduction
 The purpose of this lab was to implement the analog to digital converters n the MSP430 so that it could read and interpret signals from the robot's 3 IR detectors/emitters
@@ -102,3 +103,7 @@ I think it will be a good idea to use interrupts and just cycle through each rea
 ######convert one sensor at a time or multiple?
 
 One sensor at a time. The code will be simpler.
+
+##Lab
+###Functionality
+[![Required Functionality](http://img.youtube.com/vi/clcP6roq5XU/0.jpg)](http://www.youtube.com/watch?v=clcP6roq5XU)
