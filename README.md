@@ -9,6 +9,9 @@ ECE382_Lab07
     - [Hardware Setup](#hardwaressetup)
     - [Code Ideas](#code-ideas)
 - [Lab](#lab)
+    - [Code](#code)
+    - [Functionality](#functionality)
+    - [Debugging](#debugging)
 
 ##Introduction
 The purpose of this lab was to implement the analog to digital converters n the MSP430 so that it could read and interpret signals from the robot's 3 IR detectors/emitters
@@ -105,5 +108,58 @@ I think it will be a good idea to use interrupts and just cycle through each rea
 One sensor at a time. The code will be simpler.
 
 ##Lab
+###Code
+My code ended up being based heavily of off the given example. The main algorithm was a while loop as follows
+
+```C
+while(1){
+	// Configure P1.1 to be the ADC input (Left)
+	left = leftSensor();
+	if (left > 0x0200)	P1OUT |= BIT0;
+	else					P1OUT &= ~BIT0;
+
+	right = rightSensor();
+	if (right > 0x0200)	P1OUT |= BIT6;
+	else					P1OUT &= ~BIT6;
+
+	center = centerSensor();
+	if (center > 0x0200)	P1OUT |= (BIT0|BIT6);
+	else					P1OUT &= ~(BIT0|BIT6);
+}
+```
+The code gets a value for each sensor and then checks it against a determined number from testing the corresponded to a close distance away from the sensor. When the sensor detected an object at that distance it would turn on its LED. 
+
+The actual sensor function breakes down as follows.
+
+```C
+unsigned short centerSensor(){
+	unsigned short temp = 0;
+	 // Configure P1.4 to be the ADC input
+	ADC10CTL0 = 0;											// Turn off ADC subsystem
+	ADC10CTL1 = 0;
+	ADC10CTL1 = INCH_5 | ADC10DIV_3 ;						// Channel 5, ADC10CLK/4
+	ADC10AE0 = BIT5;		 								// Make P1.5 analog input
+	ADC10CTL0 = SREF_0 | ADC10SHT_3 | ADC10ON | ENC;		// Vcc & Vss as reference
+
+	ADC10CTL0 |= ADC10SC;									// Start a conversion
+	while(ADC10CTL1 & ADC10BUSY);							// Wait for conversion to complete
+	temp = ADC10MEM;
+	return (temp);
+
+}
+```
+
+This code centers around the proper register for the analog to digital conversion like what was determined in the pre-lab. 
+It begins by setting the pins to get input on (ADC10AE) and then starts the conversion (ADC10CTL0 |= ADC10SC) and saves the conversion in ADC10MEM which is returned as an unsigned short. 
+
+
 ###Functionality
+The code worked flashing the LEDs based on the sensors!!!! Red for left, Greed for right, Both for center.
 [![Required Functionality](http://img.youtube.com/vi/clcP6roq5XU/0.jpg)](http://www.youtube.com/watch?v=clcP6roq5XU)
+
+I also broke the code down into an easy to use library! B-Functionality!
+
+###Debugging
+One of the biggest issues I ran into was the use of P1.2 which apparently does not work with the sensors. For the longest time I could not get a reading on my center sensor. I used a logic analyzer and a voltage probe to check what was going on and it all looked normal just the code was giving my really really large values when I debugged. After a switched the pin it worked perfectly!
+
+Documentation: Dr. Coulston explained how the registers worked he also helped me debug. Bill Parks helped with big picture structure ideas. 
